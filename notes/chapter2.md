@@ -20,7 +20,8 @@ BeautifulSoup中共有四类对象：
 * BeautifulSoup对象
 * Tag对象
 * NavigableString对象
-* Comment对象
+* Comment对象：  
+Beautiful Soup defines classes for anything else that might show up in an XML document: CData, ProcessingInstruction, Declaration, and Doctype. Just like Comment, these classes are subclasses of NavigableString that add something extra to the string.
 
 
 ####5. 浏览文档树
@@ -28,20 +29,20 @@ BeautifulSoup中共有四类对象：
 
 `bsObj.tag.subTag.anotherSubTag`：这个形式可以沿着文档树进行但方向的浏览
 
-如果要基于“树结构”相关概念的浏览，就需要依赖与标签之间的亲属关系：父子、兄弟、祖先、后代等
+如果要进行基于“树结构”相关概念的浏览，就需要依赖与标签之间的亲属关系：父子、兄弟、祖先、后代等
 
 * 处理子节点和后代节点：  
-`children()`  
-`descendents()`
+`children`  
+`descendents`
 
 * 处理兄弟节点：  
-`next_siblings()`：返回位于当前标签之后的所有兄弟节点  
-`previous_siblings()`：返回位于当前标签之前的所有兄弟节点  
-`next_sibling()`：返回位于当前标签之后的第一个兄弟节点  
-`previous_sibling()`：返回位于当前标签之前的第一个兄弟节点
+`next_siblings`：返回位于当前标签之后的所有兄弟节点  
+`previous_siblings`：返回位于当前标签之前的所有兄弟节点  
+`next_sibling`：返回位于当前标签之后的第一个兄弟节点  
+`previous_sibling`：返回位于当前标签之前的第一个兄弟节点
 
 * 处理父节点  
-`parent()`
+`parent`
 
 ###三、正则表达式
 

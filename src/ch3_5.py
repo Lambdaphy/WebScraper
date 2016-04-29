@@ -4,9 +4,7 @@ import re
 import datetime
 import random
 
-pages = set()
 
-random.seed(datetime.datetime.now())
 
 def get_internal_links(bs_obj, include_url):
     internal_links = []
@@ -46,6 +44,25 @@ def follow_external_link_only(starting_page):
     print("Random external link is: " + external_link)
     follow_external_link_only(external_link)
 
-follow_external_link_only("https://www.hao123.com/")
-        
+def get_all_external_links(site_url):
+    html = urlopen(site_url)
+    bs_obj = BeautifulSoup(html, "lxml")
+    internal_links = get_internal_links(bs_obj, split_address(site_url)[0])
+    external_links = get_external_links(bs_obj, split_address(site_url)[0])
+    for link in external_links:
+        if link not in all_external_links:
+            all_external_links.add(link)
+            print(link)
+    for link in internal_links:
+        if link not in all_internal_links:
+            all_internal_links.add(link)
+            get_all_external_links(link)
+    
+pages = set()
+all_internal_links = set()
+all_external_links = set()
+random.seed(datetime.datetime.now())
+
+#follow_external_link_only("http://www.163.com/")
+get_all_external_links("http://www.163.com")      
             
